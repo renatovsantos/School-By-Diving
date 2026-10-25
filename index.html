@@ -1,0 +1,284 @@
+<title>School By Diving</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="#inicio" data-nav="inicio" aria-label="School By Diving, página inicial">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="13.5" stroke="currentColor" stroke-width="2.5"/><path d="M7.5 19.5c2.2-3 4.4-3 6.6 0s4.4 3 6.6 0 3.2-2.2 4.6-1.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="19.5" cy="10.5" r="2.2" fill="var(--accent)"/><circle cx="13.5" cy="12.5" r="1.3" fill="var(--accent)"/></svg>
+      <span>School <em>By</em> Diving</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#inicio" data-nav="inicio">Início</a>
+      <a href="#como-funciona" data-nav="como-funciona">Como funciona</a>
+      <a class="btn btn-sm" href="#agendar" data-goto="agendar">Aula experimental</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ===================== PÁGINA 1: LANDING ===================== -->
+<div data-view="inicio">
+
+  <section class="hero z-light">
+    <span class="bubble b1" aria-hidden="true"></span><span class="bubble b2" aria-hidden="true"></span>
+    <span class="bubble b3" aria-hidden="true"></span><span class="bubble b4" aria-hidden="true"></span>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Escola de inglês online</span>
+        <h1>Seu inglês, <span class="deeper">mais fundo</span> a cada aula.</h1>
+        <p class="lead">Aulas ao vivo em turmas pequenas, com um plano que respeita o seu ritmo. Você começa na superfície e segue até a fluência, com professor ao seu lado em cada metro.</p>
+        <ul class="facts">
+          <li>Aulas ao vivo</li>
+          <li>Turmas de até 6 alunos</li>
+          <li>Do A1 ao C2</li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn" href="#agendar" data-goto="agendar">Agendar aula experimental</a>
+          <a class="btn btn-ghost" href="#como-funciona" data-nav="como-funciona">Ver como funciona</a>
+        </div>
+      </div>
+
+      <div class="card" id="agendar">
+        <div data-form-state="form" style="display:grid;gap:1.1rem">
+          <div>
+            <h2>Agende sua aula experimental</h2>
+            <p class="sub">Leva um minuto. Você envia os dados pelo WhatsApp e a escola responde para combinar o melhor horário.</p>
+          </div>
+          <form id="lead-form" novalidate style="display:grid;gap:1rem">
+            <div class="field">
+              <label for="nome">Seu nome</label>
+              <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Como você gosta de ser chamado" required>
+            </div>
+            <div class="field">
+              <label for="whats">WhatsApp com DDD</label>
+              <input id="whats" name="whats" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" required>
+            </div>
+            <div class="two">
+              <div class="field">
+                <label for="nivel">Seu nível hoje</label>
+                <select id="nivel" name="nivel">
+                  <option>Não sei, quero descobrir</option>
+                  <option>Nunca estudei (superfície)</option>
+                  <option>Básico</option>
+                  <option>Intermediário</option>
+                  <option>Avançado</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="periodo">Melhor período</label>
+                <select id="periodo" name="periodo">
+                  <option>Manhã</option>
+                  <option>Tarde</option>
+                  <option>Noite</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="objetivo">Por que quer aprender inglês?</label>
+              <select id="objetivo" name="objetivo">
+                <option>Trabalho e carreira</option>
+                <option>Viagens</option>
+                <option>Estudos e intercâmbio</option>
+                <option>Conversar no dia a dia</option>
+                <option>Provas e certificados</option>
+                <option>Outro motivo</option>
+              </select>
+            </div>
+            <p class="form-error" id="form-error" role="alert" hidden></p>
+            <button class="btn" type="submit">Preparar minha mensagem</button>
+            <p class="fine">Usamos seus dados apenas para falar sobre as aulas.</p>
+          </form>
+        </div>
+
+        <div class="result" data-form-state="result" hidden style="display:none;gap:1rem">
+          <div>
+            <h2>Mensagem pronta</h2>
+            <p class="sub" id="result-sub">Falta só um passo: envie esta mensagem para a escola.</p>
+          </div>
+          <textarea id="msg" readonly aria-label="Mensagem para a escola"></textarea>
+          <div class="btn-row">
+            <a class="btn" id="wa-link" href="#" target="_blank" rel="noopener" hidden>Enviar pelo WhatsApp</a>
+            <button class="btn btn-ghost" type="button" id="copy-btn">Copiar mensagem</button>
+            <button class="btn btn-ghost" type="button" id="edit-btn">Editar dados</button>
+          </div>
+          <p class="status" id="copy-status" role="status" aria-live="polite"></p>
+          <p class="fine" id="no-contact" hidden>O número de atendimento da escola ainda não foi configurado neste site. Copie a mensagem e envie pelo canal indicado pela escola.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section z-surface" aria-labelledby="h-porque">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Por que a School By Diving</span>
+        <h2 id="h-porque">Aprender inglês é mais fácil quando você fala desde o primeiro dia.</h2>
+      </div>
+      <div class="rows">
+        <div class="row"><h3>Aulas ao vivo, com fala de verdade</h3><p>Você conversa em todas as aulas, com professor e colegas. Nada de ficar só assistindo vídeo e torcer para aprender.</p></div>
+        <div class="row"><h3>Turmas pequenas</h3><p>Até 6 alunos por turma. Sobra tempo para você falar, errar, ser corrigido e tentar de novo.</p></div>
+        <div class="row"><h3>Um plano para o seu objetivo</h3><p>Trabalho, viagem ou estudo: a trilha parte de um teste de nível e de metas que você mesmo define.</p></div>
+        <div class="row"><h3>Online, de onde você estiver</h3><p>Em casa, no trabalho ou em viagem. Você só precisa de internet, um dispositivo com câmera e fones de ouvido.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section z-deep" aria-labelledby="h-niveis">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Níveis</span>
+        <h2 id="h-niveis">Do raso ao fundo: escolha onde começar.</h2>
+        <p class="lead">Cada nível do quadro europeu (CEFR) corresponde a uma profundidade. O teste inicial mostra em qual você entra.</p>
+      </div>
+      <ol class="levels">
+        <li class="level" style="--d:0"><span class="depth-n">0 m</span><div><h3>Superfície <span class="code">A1</span></h3><p>Primeiras frases, apresentações e rotina básica. Você ganha confiança para abrir a boca.</p><div class="bar-track"><span></span></div></div></li>
+        <li class="level" style="--d:8"><span class="depth-n">8 m</span><div><h3>Águas rasas <span class="code">A2</span></h3><p>Conversas simples do dia a dia, compras, direções e planos de viagem.</p><div class="bar-track"><span></span></div></div></li>
+        <li class="level" style="--d:16"><span class="depth-n">16 m</span><div><h3>Meia-água <span class="code">B1</span></h3><p>Contar experiências, dar opinião e se virar em quase qualquer situação.</p><div class="bar-track"><span></span></div></div></li>
+        <li class="level" style="--d:24"><span class="depth-n">24 m</span><div><h3>Mergulho avançado <span class="code">B2</span></h3><p>Fluência para reuniões, entrevistas e debates, com mais naturalidade.</p><div class="bar-track"><span></span></div></div></li>
+        <li class="level" style="--d:32"><span class="depth-n">32 m</span><div><h3>Águas profundas <span class="code">C1</span></h3><p>Argumentação, nuances e apresentações complexas, com precisão de vocabulário.</p><div class="bar-track"><span></span></div></div></li>
+        <li class="level" style="--d:40"><span class="depth-n">40 m</span><div><h3>Maestria <span class="code">C2</span></h3><p>Domínio próximo ao de um falante nativo, em qualquer contexto.</p><div class="bar-track"><span></span></div></div></li>
+      </ol>
+      <p class="caption">40 m é o limite do mergulho recreativo. Aqui, é o topo da escala.</p>
+    </div>
+  </section>
+
+  <section class="section z-deep" style="border-top:1px solid var(--line)" aria-labelledby="h-aula">
+    <div class="wrap">
+      <div class="split">
+        <div class="section-head" style="margin:0">
+          <span class="eyebrow">Como é uma aula</span>
+          <h2 id="h-aula">Toda aula é um mergulho planejado.</h2>
+        </div>
+        <a class="btn btn-ghost" href="#como-funciona" data-nav="como-funciona">Ver o passo a passo</a>
+      </div>
+      <div class="phases">
+        <div class="phase"><span class="min">10 MIN</span><h3>Briefing</h3><p>O professor apresenta o objetivo e o vocabulário da aula. Você sabe para onde vai antes de descer.</p></div>
+        <div class="phase"><span class="min">30 MIN</span><h3>Mergulho</h3><p>Conversa em grupo e em duplas, com situações reais. É o momento em que você mais fala.</p></div>
+        <div class="phase"><span class="min">10 MIN</span><h3>Debriefing</h3><p>Correções, erros mais comuns e a prática até a próxima aula, com feedback direto.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section z-abyss" aria-labelledby="h-faq">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">Dúvidas frequentes</span><h2 id="h-faq">Antes de mergulhar</h2></div>
+      <div class="faq">
+        <details><summary>Preciso saber algum inglês para começar?</summary><p>Não. Se você nunca estudou, começa na superfície, no nível A1. Se já tem alguma base, o teste de nível indica a turma certa.</p></details>
+        <details><summary>Como são as aulas?</summary><p>São ao vivo, por videochamada, com turmas de até 6 alunos. Cada aula tem três momentos: briefing, mergulho e debriefing.</p></details>
+        <details><summary>O que preciso para assistir?</summary><p>Um computador, tablet ou celular com câmera e microfone, internet estável e fones de ouvido. Um lugar tranquilo ajuda bastante.</p></details>
+        <details><summary>Consigo encaixar as aulas na minha rotina?</summary><p>Há turmas em períodos diferentes. No formulário você escolhe manhã, tarde ou noite, e a escola busca a turma mais próxima da sua rotina.</p></details>
+        <details><summary>Quanto custa?</summary><p>Os valores dependem do plano e da frequência escolhidos. Envie o formulário e a escola apresenta as opções para o seu caso.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section z-abyss" style="padding-top:0">
+    <div class="wrap cta">
+      <h2>Pronto para o primeiro mergulho?</h2>
+      <p class="lead">Agende sua aula experimental e descubra em que profundidade o seu inglês começa.</p>
+      <a class="btn" href="#agendar" data-goto="agendar">Agendar aula experimental</a>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PÁGINA 2: COMO FUNCIONA ===================== -->
+<div data-view="como-funciona" hidden>
+
+  <section class="page-hero z-light">
+    <div class="wrap">
+      <span class="eyebrow">Como funciona</span>
+      <h1>Um mergulho bem planejado, do início ao fim.</h1>
+      <p class="lead">Do primeiro contato à troca de nível, você sabe em que etapa está e qual é a próxima. Veja o caminho completo.</p>
+    </div>
+  </section>
+
+  <section class="section z-surface" aria-labelledby="h-jornada">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">Sua jornada</span><h2 id="h-jornada">Cinco etapas, na ordem.</h2></div>
+      <div class="steps">
+        <div class="step"><span class="node">1</span><div><h3>Conversa e teste de nível</h3><p>Você faz um teste curto e conversa com a equipe sobre objetivo, rotina e prazo. Assim descobrimos a profundidade em que você começa.</p></div></div>
+        <div class="step"><span class="node">2</span><div><h3>Plano de estudo e turma</h3><p>Montamos sua trilha por ciclos, com metas claras, e escolhemos a turma do seu nível e do seu período: manhã, tarde ou noite.</p></div></div>
+        <div class="step"><span class="node">3</span><div><h3>Aulas ao vivo</h3><p>Duas aulas por semana, de 50 minutos, por videochamada. As turmas têm até 6 alunos, então você fala em todas as aulas.</p></div></div>
+        <div class="step"><span class="node">4</span><div><h3>Prática entre as aulas</h3><p>Tarefas curtas de escuta, leitura e fala mantêm o ritmo entre um encontro e outro, sem ocupar a sua semana inteira.</p></div></div>
+        <div class="step"><span class="node">5</span><div><h3>Revisão do ciclo</h3><p>Ao fim de cada ciclo, o professor avalia seu avanço e ajusta o plano. Você muda de nível quando está pronto, não por calendário.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section z-light" aria-labelledby="h-precisa">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">Equipamento</span><h2 id="h-precisa">O que você precisa para começar.</h2></div>
+      <div class="needs">
+        <div class="need"><h3>Um dispositivo</h3><p>Computador, tablet ou celular com câmera e microfone funcionando.</p></div>
+        <div class="need"><h3>Internet estável</h3><p>Suficiente para uma videochamada sem travar durante os 50 minutos.</p></div>
+        <div class="need"><h3>Fones e um canto calmo</h3><p>Ouvir bem faz diferença. Um lugar silencioso ajuda você a se concentrar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section z-deep" aria-labelledby="h-anatomia">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Anatomia de uma aula</span>
+        <h2 id="h-anatomia">Cinquenta minutos, três momentos.</h2>
+        <p class="lead">Toque em cada parte para ver o que acontece. A largura mostra quanto tempo cada uma ocupa.</p>
+      </div>
+      <div class="seg-bar" role="group" aria-label="Momentos da aula">
+        <button class="seg" type="button" data-phase="briefing" aria-pressed="false" style="--min:10">Briefing<small>10 MIN</small></button>
+        <button class="seg" type="button" data-phase="mergulho" aria-pressed="true" style="--min:30">Mergulho<small>30 MIN</small></button>
+        <button class="seg" type="button" data-phase="debriefing" aria-pressed="false" style="--min:10">Debriefing<small>10 MIN</small></button>
+      </div>
+      <div class="scale" aria-hidden="true"><span>0 min</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50 min</span></div>
+
+      <div class="panel" data-panel="briefing" hidden>
+        <h3>Briefing</h3>
+        <p>O professor apresenta o objetivo da aula, revisa o vocabulário-chave e combina o que vocês vão praticar. Você entra no assunto já sabendo para onde vai.</p>
+      </div>
+      <div class="panel" data-panel="mergulho">
+        <h3>Mergulho</h3>
+        <p>É o centro da aula. Conversas em grupo e em duplas, situações reais e pequenas discussões. O professor guia o caminho, mas quem fala é você.</p>
+      </div>
+      <div class="panel" data-panel="debriefing" hidden>
+        <h3>Debriefing</h3>
+        <p>O professor devolve os pontos de melhoria, revisa os erros mais comuns e indica a prática até a próxima aula. Você sai com o que fazer em seguida.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section z-abyss">
+    <div class="wrap cta">
+      <span class="eyebrow">Próximo passo</span>
+      <h2>Quer ver isso na prática?</h2>
+      <p class="lead">Agende uma aula experimental e conheça o método por dentro.</p>
+      <a class="btn" href="#agendar" data-goto="agendar">Agendar aula experimental</a>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="footer z-abyss">
+  <div class="wrap footer-in">
+    <a class="brand" href="#inicio" data-nav="inicio"><span>School <em>By</em> Diving</span></a>
+    <span>© 2026 School By Diving. Todos os direitos reservados.</span>
+    <span><a href="#inicio" data-nav="inicio">Início</a> · <a href="#como-funciona" data-nav="como-funciona">Como funciona</a></span>
+  </div>
+</footer>
+
+<div class="depth-pill" aria-hidden="true"><span>prof.</span><b id="pill-read">0 m</b></div>
+<div class="gauge" aria-hidden="true">
+  <div class="gauge-line"></div>
+  <div class="tick" style="top:1.1rem"><span>0</span></div>
+  <div class="tick" style="top:calc(1.1rem + (100% - 2.2rem) * 0.25)"><span>10</span></div>
+  <div class="tick" style="top:calc(1.1rem + (100% - 2.2rem) * 0.5)"><span>20</span></div>
+  <div class="tick" style="top:calc(1.1rem + (100% - 2.2rem) * 0.75)"><span>30</span></div>
+  <div class="tick" style="top:calc(100% - 1.1rem)"><span>40</span></div>
+  <div class="gauge-dot" id="gauge-dot" style="top:1.1rem"></div>
+  <div class="gauge-read" id="gauge-read">0 m</div>
+</div>
+
+<script src="js/script.js"></script>
