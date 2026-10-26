@@ -14,11 +14,25 @@ function updateDepth() {
   const d = Math.round(p * 40);
   $("#pill-read").textContent = d + " m";
   $("#gauge-read").textContent = d + " m";
+  $("#bar-read").textContent = d + " m";
   $("#gauge-dot").style.top = "calc(1.1rem + (100% - 2.2rem) * " + p.toFixed(4) + ")";
 }
 function queueDepth() { if (!ticking) { ticking = true; requestAnimationFrame(updateDepth); } }
 window.addEventListener("scroll", queueDepth, { passive: true });
 window.addEventListener("resize", queueDepth);
+
+/* Barra de ação no celular: some quando o formulário está visível */
+const mobileBar = $("#mobile-cta");
+let formVisible = false;
+function syncBar() {
+  const onHome = !$("[data-view='inicio']").hidden;
+  mobileBar.classList.toggle("is-hidden", onHome && formVisible);
+}
+if ("IntersectionObserver" in window) {
+  new IntersectionObserver((entries) => { formVisible = entries[0].isIntersecting; syncBar(); }, { threshold: 0.1 }).observe($("#agendar"));
+} else {
+  formVisible = false;
+}
 
 /* Navegação entre as duas páginas */
 function show(name, keepScroll) {
@@ -30,6 +44,7 @@ function show(name, keepScroll) {
     }
   });
   if (!keepScroll) window.scrollTo(0, 0);
+  syncBar();
   queueDepth();
 }
 $$("[data-nav]").forEach((a) => a.addEventListener("click", (e) => {
